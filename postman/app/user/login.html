@@ -1,0 +1,38 @@
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Please Sign In</h3>
+                <div class="panel-body">
+                    <form name="loginuser" ng-controller="loginController" ng-submit="doLogin(loginuser.$valid)" class="css-form { 'has-error' : errorName } ng-pristine" novalidate >
+                        <fieldset>
+                            <div class="form-group has-feedback">
+
+                                <input class="form-control input-lg" type="email" ng-model="loginuser.emailaddress" name="emailaddress" id="emailaddress" placeholder="Email" required autofocus>
+                                <span class="ion-at form-control-feedback"></span>
+
+
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input class="form-control input-lg" type="password" name="password" ng-model="loginuser.password" id="password" placeholder="Password" required>
+                                <span class="ion-key form-control-feedback"></span>
+
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input name="remember" type="checkbox"  ng-model="loginuser.remember"  value="Remember Me">Remember Me
+                                </label>
+                                <label>
+                                    <a href="#/newuser">New user</a>
+                                </label>
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <div class="col-md-10">
+                                <button type="submit" ng-disabled="loginuser.$invalid"  class="btn btn-primary btn-lg btn-success btn-block">
+                                    <span class="glyphicon glyphicon-flash"></span>  Login        </button>
+                                </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>

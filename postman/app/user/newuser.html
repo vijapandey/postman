@@ -1,0 +1,123 @@
+<div class="col-md-8 col-md-offset-4 signuppanel">
+<!-- PAGE TITLE -->
+<div class="page-header" >
+    <h1><span class="glyphicon glyphicon-tower"></span>Sign Up</h1>
+</div>
+<!-- SHOW ERROR/SUCCESS MESSAGES -->
+<div id="messages" class="well" ng-show="message">{{ message }}</div>
+
+    <div class="panel-body">
+    <form name="signup" ng-controller="signupController" ng-submit="signupSubmit(signup.$valid)" class="css-form { 'has-error' : errorName }" novalidate >
+        <div class="form-group">
+            <label for="firstname" class="col-md-2">          First Name*:          </label>
+            <div class="col-md-10">
+                <input type="text"  ng-model="user.firstname" ng-minlength="2"  required class="form-control" name="firstname" placeholder="Enter First Name">
+                <p ng-show="signup.firstname.$error.minlength" class="help-block">name is too short.</p>
+
+            </div><br/><br/>
+        </div>
+
+        <div class="form-group">
+            <label for="lastname" class="col-md-2">           Last Name*:          </label>
+            <div class="col-md-10">
+                <input type="text" ng-model="user.lastname" required class="form-control" name="lastname" placeholder="Enter Last Name">
+                <p ng-show="signup.lastname.$invalid && !signup.lastname.$pristine" class="help-block">lastname name is required.</p>
+
+            </div><br/><br/>
+        </div>
+
+        <div class="form-group">
+            <label for="emailaddress" class="col-md-2">               Email address*:         </label>
+            <div class="col-md-10">
+                <input type="email" ng-model="user.emailaddress" required  class="form-control" name="emailaddress" placeholder="Enter email address">
+                <p ng-show="signup.emailaddress.$invalid && !signup.emailaddress.$pristine" class="help-block">Enter a valid email.</p>
+
+            </div><br/><br/>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="col-md-2">               Password*:            </label>
+            <div class="col-md-10">
+                <input type="password" ng-model="user.password"  id="password"  class="form-control" name="password" placeholder="Enter Password" required >
+                <div ng-show="signup.password.$error.required"> Password required</div>
+
+                <input type="password" ng-model="user.passwordVerify" ng-required data-password-verify="user.password" class="form-control" name="passwordVerify" id="passwordVerify" placeholder="Enter Confirm Password">
+                <div ng-show="signup.passwordVerify.$error.required">Confirm password required!</div>
+                <div class="msg-error" ng-show="signup.passwordVerify.$error.pwmatch">    Passwords don't match.  </div>
+
+                <div ng-show="signup.passwordVerify.$error.required">      Field required!</div>
+                <div ng-show="signup.passwordVerify.$error.passwordVerify">  Fields are not equal!</div>
+
+
+
+            </div>
+        </div>
+
+
+
+      <!--  <input data-ng-model='password' type="password" name='password' placeholder='password' required>
+        <div ng-show="form.password.$error.required">
+            Field required</div>
+        <input ng-model='password_verify' type="password" name='confirm_password' placeholder='confirm password' required data-password-verify="password">
+        <div ng-show="signup.confirm_password.$error.required">
+            Field required!</div>
+        <div ng-show="signup.confirm_password.$error.passwordVerify">
+            Fields are not equal!</div>-->
+
+
+
+        <div class="form-group">
+            <label for="sex" class="col-md-2">                Sex*:            </label>
+            <div class="col-md-10">
+                <label class="radio">
+                    <input type="radio" ng-model="user.sex"    name="sex" value="male" checked>     Male
+                </label>
+                <label class="radio">
+                    <input type="radio" ng-model="user.sex"   name="sex" value="female">         Female
+                </label>
+            </div><br/><br/>
+        </div>
+
+        <div class="form-group">
+            <label for="country" class="col-md-2">              Country*:           </label>
+            <div class="col-md-10">
+                <select name="country"  class="form-control" ng-model="user.country" required  >
+                    <option>--Please Select--</option>
+                    <option>India</option>
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>United Kingdom</option>
+                    <option>Others</option>
+                </select>
+
+            </div><br/><br/><br/><br/>
+        </div>
+
+        <div class="form-group">
+            <label for="uploadimage" class="col-md-2">    Upload Image:           </label>
+            <div class="col-md-10">
+                <input type="file" ng-model="user.uploadimage"   name="uploadimage">
+                <p class="help-block">    Allowed formats: jpeg, jpg, gif, png            </p>
+            </div><br/><br/>
+        </div>
+
+        <div class="checkbox">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+                <label>    <input type="checkbox" name="terms" ng-model="terms" required >Terms and Conditions*</label>
+
+            </div><br/><br/>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+                <button type="submit" ng-disabled="signup.$invalid"  class="btn btn-primary"><span class="glyphicon glyphicon-flash"></span>  Sign up        </button>
+                <input type="button" ng-click="reset()" value="Reset" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+        </div>
+</div>
